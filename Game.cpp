@@ -121,7 +121,7 @@ void Game::play() {
 					}
 					break;
 				case SDL_MOUSEBUTTONDOWN:
-					if(e.button.button = SDL_BUTTON_LEFT) {
+					if(e.button.button == SDL_BUTTON_LEFT) { // OOPS!
 						//SDL_Rect ply = player->getEntity();
 						int x = e.button.x, y = e.button.y;
 						SDL_Rect b_model = {x, y, 10, 10};
