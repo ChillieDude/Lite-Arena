@@ -122,30 +122,24 @@ void Game::play() {
 					break;
 				case SDL_MOUSEBUTTONDOWN:
 					if(e.button.button = SDL_BUTTON_LEFT) {
-						SDL_Rect ply = player->getEntity();
+						//SDL_Rect ply = player->getEntity();
 						int x = e.button.x, y = e.button.y;
 						SDL_Rect b_model = {x, y, 10, 10};
 
 						Bullet* b = new Bullet(UID_Count++, b_model, {255, 0, 0, 255}, entities, bullet_speed, {x, y, 0, 0}, SCREEN_W, SCREEN_H);
 						entities.push_back(b);
 					}
+					break;
+				default:
+					//Nothing yet
+					break;
 			}
 		}
-
+		
+		//Handle the state before calling tick
 		state = SDL_GetKeyboardState(NULL);
+		player->HandleState(state)
 
-		if(state[SDL_SCANCODE_W]) {
-			player->move(0, -1, delta, SCREEN_W, SCREEN_H);
-		}
-		if(state[SDL_SCANCODE_S]) {
-			player->move(0, 1, delta, SCREEN_W, SCREEN_H);
-		}
-		if(state[SDL_SCANCODE_A]) {
-			player->move(-1, 0, delta, SCREEN_W, SCREEN_H);
-		}
-		if(state[SDL_SCANCODE_D]) {
-			player->move(1, 0, delta, SCREEN_W, SCREEN_H);
-		}
 
 		//Call tick() for all entities
 		for(std::vector<Entity*>::iterator e = entities.begin(); e != entities.end(); ++e) {
