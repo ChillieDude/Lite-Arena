@@ -10,6 +10,7 @@ public:
 	void tick(float delta);
 private:
 	SDL_Rect target;
+	int timer;
 };
 
 #endif
