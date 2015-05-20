@@ -149,6 +149,7 @@ void Game::play() {
 		//Remove all dead entities
 		for(int i = 0; i < entities.size(); i++) {
 			if(!entities[i]->isAlive()) {
+				delete entities[i];
 				entities.erase(entities.begin() + i);
 			}
 		}
