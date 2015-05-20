@@ -16,6 +16,9 @@ public:
 	Game(const int SCREEN_WIDTH, const int SCREEN_HEIGHT);
 	~Game();
 	void run();
+	
+	static const SCREEN_WIDTH = 640;
+	static const SCREEN_HEIGHT = 480;
 private:
 	void play();
 	bool init();
